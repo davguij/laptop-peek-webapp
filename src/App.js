@@ -3,21 +3,23 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import logo from './logo.svg';
 import './App.css';
+
+import Navbar from './global/Navbar/Navbar';
+import Feed from './Feed/Feed';
 
 class App extends Component<any, any> {
   render() {
     return (
       <Router>
         <div>
-          <img src={logo} className="App-logo" alt="logo" />
+          <Navbar />
           <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/feed">Feed</Link>
             </li>
             <li>
               <Link to="/topics">Topics</Link>
@@ -29,6 +31,7 @@ class App extends Component<any, any> {
           {/* <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/topics" component={Topics} /> */}
+          <Route path="/feed" component={Feed} />
         </div>
       </Router>
     );
