@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Button } from 'reactstrap';
 import auth from '../global/Auth/Auth';
 
 class New extends Component<any, any> {
@@ -14,7 +15,12 @@ class New extends Component<any, any> {
   render() {
     const { profile } = this.state;
     console.log(profile);
-    return <div>{profile.name}</div>;
+    return (
+      <Container>
+        <div>{profile.name}</div>
+        <Button>Login</Button>
+      </Container>
+    );
   }
 }
 

@@ -12,6 +12,7 @@ import {
   NavLink,
   // Button,
 } from 'reactstrap';
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Route, Link } from 'react-router-dom';
 
 import auth from '../Auth/Auth';
