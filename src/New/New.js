@@ -13,6 +13,7 @@ class New extends Component<any, any> {
   }
   render() {
     const { profile } = this.state;
+    console.log(profile);
     return <div>{profile.name}</div>;
   }
 }

@@ -1,18 +1,38 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+import {
+  Container,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink,
+  // Button,
+} from 'reactstrap';
+import { BrowserRouter as Route, Link } from 'react-router-dom';
 
 import auth from '../Auth/Auth';
 
-import logo from './logo.svg';
+class Navigationbar extends Component<any, any> {
+  state = {
+    isOpen: false,
+  };
 
-class Navbar extends Component<any, any> {
-  constructor(props: any) {
-    super(props);
+  constructor() {
+    super();
     (this: any).doLogin = this.doLogin.bind(this);
     (this: any).doLogout = this.doLogout.bind(this);
     (this: any).isAuth = this.isAuth.bind(this);
+    (this: any).toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
   }
 
   doLogin() {
@@ -29,12 +49,27 @@ class Navbar extends Component<any, any> {
 
   render() {
     return (
-      <div>
-        <img src={logo} alt="" />
-        {!this.isAuth() && <Button onClick={this.doLogin}>Login</Button>}
-        {this.isAuth() && <Button onClick={this.doLogout}>Logout</Button>}
-      </div>
+      <Container>
+        <Navbar color="faded" light expand="md">
+          <NavbarBrand tag={Link} to="/feed">
+            Laptop Peek
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink tag={Link} to="/new">
+                  New
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+        {/* {!this.isAuth() && <Button onClick={this.doLogin}>Login</Button>}
+        {this.isAuth() && <Button onClick={this.doLogout}>Logout</Button>} */}
+      </Container>
     );
   }
 }
-export default Navbar;
+
+export default Navigationbar;
